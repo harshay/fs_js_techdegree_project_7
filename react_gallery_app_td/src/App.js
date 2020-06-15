@@ -8,13 +8,13 @@
  *********************************************************************************************************/
 
 import React, { Component } from 'react';
-import searchform from './components/searchform';
+import searchForm from './components/searchform';
 
 
 function App() {
   return (
     <div className="container">
-      <searchform /> 
+      <searchForm /> 
 
     </div>
   );
