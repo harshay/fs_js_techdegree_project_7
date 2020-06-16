@@ -7,11 +7,15 @@
  * Harshay 
  *********************************************************************************************************/
 
+
+//constructing a url to retrieve images : https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg    
+
+ /******************************************************************************************************** */
 import React, { Component } from 'react';
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
-import apiKey from './components/Config.js';
+import apiKey from './components/Config';
 
 
 export default class App extends Component {
@@ -30,10 +34,12 @@ export default class App extends Component {
 
   componentDidMount() {
 
-    fetch('http://flickr.photos.search?api_key=38ea721d9a8db6672afb43c9e1e1be58&text=dogs')
-      .then(response => response.text())
-      .then(data => console.log(data.results));
+    fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38ea721d9a8db6672afb43c9e1e1be58&tags=dogs&per_page=24&format=json&nojsoncallback=1')
+      .then(response => response.json())
+      .then(data => console.log(data.photos.photo));
 
+      //.then(data => this.setState({imgs:data.photos.photo}));
+ 
   };
 
   render() {
@@ -43,14 +49,12 @@ export default class App extends Component {
       <div className="container">
         <SearchForm /> 
         <Nav />
-        <PhotoContainer />
+        <PhotoContainer data={this.state.imgs}/>
       </div>
 
     );
   
-  };
-
-  
+  };  
 
 };
  
