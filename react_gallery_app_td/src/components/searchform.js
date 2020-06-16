@@ -1,6 +1,15 @@
+/*********************************************************************************************************
+ * Techdegree 
+ * Project 7 - Gallery React App 
+ * Exceeds Expectation Grade
+ * Full Stack Javascript - Treehouse
+ * Component - Main app container
+ * Harshay 
+ *********************************************************************************************************/
+
 import React from 'react'; 
 
-const searchForm = () => {
+const SearchForm = () => {
 
     return (
 
@@ -20,5 +29,5 @@ const searchForm = () => {
 
 
 
-export default searchForm; 
+export default SearchForm; 
 

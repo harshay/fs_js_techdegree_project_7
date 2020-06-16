@@ -8,16 +8,49 @@
  *********************************************************************************************************/
 
 import React, { Component } from 'react';
-import searchForm from './components/searchform';
+import SearchForm from './components/SearchForm';
+import Nav from './components/Nav';
+import PhotoContainer from './components/PhotoContainer';
+import apiKey from './components/Config.js';
 
 
-function App() {
-  return (
-    <div className="container">
-      <searchForm /> 
+export default class App extends Component {
 
-    </div>
-  );
-}
+  constructor() {
+
+    super();
+
+    this.state =  {
+
+      imgs:[]
+
+    };
+
+  };
+
+  componentDidMount() {
+
+    fetch('http://flickr.photos.search?api_key=38ea721d9a8db6672afb43c9e1e1be58&text=dogs')
+      .then(response => response.text())
+      .then(data => console.log(data.results));
+
+  };
+
+  render() {
+
+    return (
+    
+      <div className="container">
+        <SearchForm /> 
+        <Nav />
+        <PhotoContainer />
+      </div>
+
+    );
+  
+  };
+
+  
+
+};
  
-export default App;
