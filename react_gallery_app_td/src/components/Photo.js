@@ -11,7 +11,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-const Img = (props) => { 
+const Photo = (props) => { 
 
     return(
 
@@ -21,4 +21,4 @@ const Img = (props) => {
 
 };
 
-export default Img;
+export default Photo;

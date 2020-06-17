@@ -26,7 +26,7 @@ export default class App extends Component {
 
     this.state =  {
 
-      imgs:[]
+      photos:[]
 
     };
 
@@ -36,7 +36,7 @@ export default class App extends Component {
 
     fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38ea721d9a8db6672afb43c9e1e1be58&tags=dogs&per_page=24&format=json&nojsoncallback=1')
       .then(response => response.json())
-      .then(data => this.setState({imgs:data.photos.photo}));
+      .then(data => this.setState({photos:data.photos.photo}));
  
   };
 
@@ -47,7 +47,7 @@ export default class App extends Component {
       <div className="container">
         <SearchForm /> 
         <Nav />
-        <PhotoContainer data={this.state.imgs}/>
+        <PhotoContainer data={this.state.photos}/>
       </div>
 
     );

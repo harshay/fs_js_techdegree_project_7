@@ -9,7 +9,7 @@
  *********************************************************************************************************/
  
 import React, { Component } from 'react';
-import Img from './components/Img';
+import Photo from './components/Photo.js';
 
 //js interpolation example
 //href=`http://localhost:3000/project/${i}`
@@ -20,7 +20,7 @@ const PhotoContainer = (props) => {
     const results = props.data; 
     let imgs = results.map( img => 
 
-        <Img url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} /> 
+        <Photo url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} /> 
 
     ); 
 
