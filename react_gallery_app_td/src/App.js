@@ -16,7 +16,12 @@ import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
 import apiKey from './components/Config';
+import {
 
+  BrowserRouter,
+  Route
+
+} from 'react-router-dom';
 
 export default class App extends Component {
 
@@ -34,21 +39,32 @@ export default class App extends Component {
 
   componentDidMount() {
 
-    fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38ea721d9a8db6672afb43c9e1e1be58&tags=dogs&per_page=24&format=json&nojsoncallback=1')
+    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38ea721d9a8db6672afb43c9e1e1be58&tags=planets&per_page=24&format=json&nojsoncallback=1`)
       .then(response => response.json())
       .then(data => this.setState({photos:data.photos.photo}));
  
   };
 
+  performSearch = (query) =>  {
+
+    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38ea721d9a8db6672afb43c9e1e1be58&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+      .then(response => response.json())
+      .then(data => this.setState({photos:data.photos.photo}));
+
+  };
+
   render() {
 
     return (
-    
-      <div className="container">
-        <SearchForm /> 
-        <Nav />
-        <PhotoContainer data={this.state.photos}/>
-      </div>
+      <BrowserRouter>
+          <route exact path = '/' render={ () =>  {
+            <div className="container">
+              <SearchForm onSearch={this.performSearch} /> 
+              <Nav />
+              <PhotoContainer data={this.state.photos}/>
+            </div>
+          }};        
+      </BrowserRouter> 
 
     );
   

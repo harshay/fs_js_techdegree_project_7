@@ -9,7 +9,7 @@
  *********************************************************************************************************/
  
 import React, { Component } from 'react';
-import Photo from './components/Photo.js';
+import Photo from './Photo';
 
 //js interpolation example
 //href=`http://localhost:3000/project/${i}`
