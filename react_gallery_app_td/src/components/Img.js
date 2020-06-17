@@ -13,7 +13,7 @@ import { render } from 'react-dom';
 
 const Img = (props) => { 
 
-    render(
+    return(
 
         <li><img src={props.url} alt = ''/></li> 
 

@@ -11,12 +11,16 @@
 import React, { Component } from 'react';
 import Img from './components/Img';
 
+//js interpolation example
+//href=`http://localhost:3000/project/${i}`
+//`${about_linkedin_link}`
+
 const PhotoContainer = (props) => {
 
     const results = props.data; 
     let imgs = results.map( img => 
 
-        <Img url={'https://farm'+{img.farm}+'.staticflickr.com/'+{img.server}+'/'+{img.id}+'_'+{img.secret}+'.jpg'} /> 
+        <Img url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} /> 
 
     ); 
 

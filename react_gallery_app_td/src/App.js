@@ -36,9 +36,7 @@ export default class App extends Component {
 
     fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38ea721d9a8db6672afb43c9e1e1be58&tags=dogs&per_page=24&format=json&nojsoncallback=1')
       .then(response => response.json())
-      .then(data => console.log(data.photos.photo));
-
-      //.then(data => this.setState({imgs:data.photos.photo}));
+      .then(data => this.setState({imgs:data.photos.photo}));
  
   };
 
