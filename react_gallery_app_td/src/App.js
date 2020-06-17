@@ -62,8 +62,8 @@ export default class App extends Component {
               <SearchForm onSearch={this.performSearch} /> 
               <Nav />
               <PhotoContainer data={this.state.photos}/>
-            </div>
-          }};        
+          </div> }}
+                  
       </BrowserRouter> 
 
     );
