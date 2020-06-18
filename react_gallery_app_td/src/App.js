@@ -53,6 +53,7 @@ export default class App extends Component {
 
   };
 
+
   render() {
 
     return (
@@ -60,7 +61,7 @@ export default class App extends Component {
           <Route exact path = '/' render={ () =>  (
             <div className="container">
               <SearchForm onSearch={this.performSearch} /> 
-              <Nav />
+              <Nav filterphotos={this.performSearch}/>
               <PhotoContainer data={this.state.photos}/>
           </div> )}/>
                   

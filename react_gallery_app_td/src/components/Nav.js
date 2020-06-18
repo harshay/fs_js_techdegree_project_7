@@ -7,7 +7,7 @@
  * Harshay 
  *********************************************************************************************************/
 
-import React from 'react'; 
+import React, { Component } from 'react';
 import {
 
     BrowserRouter,
@@ -15,24 +15,26 @@ import {
     NavLink
   
   } from 'react-router-dom';
+
 import apiKey from './Config';
 
-const Nav = () => {
+export default class Nav extends Component {
 
-    return (
+    render() {
 
-        <nav className="main-nav">
-            <ul>
-                <li><NavLink to ='#'>Cats</NavLink></li>
-                <li><NavLink to ='#'>Dogs</NavLink></li>
-                <li><NavLink to ='#'>Computers</NavLink></li>
-            </ul>
-        </nav>
-    );
+        return (
+
+            <nav className="main-nav">
+                <ul>
+                    <li><NavLink to = {this.props.filterphotos('cats')}>Cats</NavLink></li>
+                    <li><NavLink to ='#'>Dogs</NavLink></li>
+                    <li><NavLink to ='#'>Computers</NavLink></li>
+                </ul>
+            </nav>
+        );
+
+
+    };
 
 };
-
-
-
-export default Nav; 
 
