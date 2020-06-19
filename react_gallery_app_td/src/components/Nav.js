@@ -26,7 +26,7 @@ export default class Nav extends Component {
 
             <nav className="main-nav">
                 <ul>
-                    <li><NavLink to = {this.props.filterphotos('cats')}>Cats</NavLink></li>
+                    <li><NavLink to = '#'>Cats</NavLink></li>
                     <li><NavLink to ='#'>Dogs</NavLink></li>
                     <li><NavLink to ='#'>Computers</NavLink></li>
                 </ul>

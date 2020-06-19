@@ -20,7 +20,7 @@ const PhotoContainer = (props) => {
     const results = props.data; 
     let imgs = results.map( img => 
 
-        <Photo url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} /> 
+        <Photo key={img.id} url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} /> 
 
     ); 
 

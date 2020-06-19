@@ -58,12 +58,24 @@ export default class App extends Component {
 
     return (
       <BrowserRouter>
+
           <Route exact path = '/' render={ () =>  (
             <div className="container">
               <SearchForm onSearch={this.performSearch} /> 
-              <Nav filterphotos={this.performSearch}/>
+              <Nav />
               <PhotoContainer data={this.state.photos}/>
-          </div> )}/>
+            </div> 
+          )}/>
+
+          <Route path = '/cats' render={ () =>  (
+            <div className="container">
+              <SearchForm onSearch={this.performSearch} /> 
+              <Nav />
+              <PhotoContainer render={() => {this.performSearch('cats');}} data={this.state.photos}/>
+              
+              
+            </div> 
+          )}/>
                   
       </BrowserRouter> 
 
