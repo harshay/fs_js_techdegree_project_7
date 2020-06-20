@@ -10,16 +10,33 @@
 
 //constructing a url to retrieve images : https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg    
 
+/*
+reference code
+
+<Route exact path = '/' render={ () =>  (
+            <div className="container">
+              <SearchForm onSearch={this.performSearch} /> 
+              <Nav />
+              <PhotoContainer data={this.state.photos}/>           
+            </div> 
+          )}/>
+
+*/
+
+
+
  /******************************************************************************************************** */
 import React, { Component } from 'react';
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
+import NotFound from './components/NotFound';
 import apiKey from './components/Config';
 import {
 
   BrowserRouter,
-  Route
+  Route,
+  Switch
 
 } from 'react-router-dom';
 
@@ -31,7 +48,8 @@ export default class App extends Component {
 
     this.state =  {
 
-      photos:[]
+      photos:[],
+      loading: true
 
     };
 
@@ -49,34 +67,59 @@ export default class App extends Component {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => response.json())
-      .then(data => this.setState({photos:data.photos.photo}));
+      .then(data => this.setState({
+        photos:data.photos.photo,
+        loading:false}));
 
   };
-
 
   render() {
 
     return (
       <BrowserRouter>
-
+      <Switch>
           <Route exact path = '/' render={ () =>  (
             <div className="container">
               <SearchForm onSearch={this.performSearch} /> 
               <Nav />
+              {
+              if (this.state.loading) {
+                <h3>Loading</h3>
+              } else {
+                <PhotoContainer data={this.state.photos}/>
+              };
+              }          
+            </div> 
+          )}/>
+          <Route path = '/cats' render={ () =>  (
+            <div className="container">
+              <SearchForm onSearch={this.performSearch('cats')} /> 
+              <Nav />
               <PhotoContainer data={this.state.photos}/>
             </div> 
           )}/>
-
-          <Route path = '/cats' render={ () =>  (
+          <Route path = '/dogs' render={ () =>  (
+            <div className="container">
+              <SearchForm onSearch={this.performSearch('dogs')} /> 
+              <Nav />
+              <PhotoContainer data={this.state.photos}/>              
+            </div> 
+          )}/>
+          <Route path = '/cars' render={ () =>  (
+            <div className="container">
+              <SearchForm onSearch={this.performSearch('cars')} /> 
+              <Nav />
+              <PhotoContainer data={this.state.photos}/>              
+            </div> 
+          )}/>
+          <Route render={ () =>  (
             <div className="container">
               <SearchForm onSearch={this.performSearch} /> 
               <Nav />
-              <PhotoContainer render={() => {this.performSearch('cats');}} data={this.state.photos}/>
-              
-              
+              <NotFound />              
             </div> 
           )}/>
-                  
+      </Switch>
       </BrowserRouter> 
 
     );

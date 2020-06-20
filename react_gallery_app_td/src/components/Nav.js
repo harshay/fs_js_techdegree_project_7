@@ -26,9 +26,9 @@ export default class Nav extends Component {
 
             <nav className="main-nav">
                 <ul>
-                    <li><NavLink to = '#'>Cats</NavLink></li>
-                    <li><NavLink to ='#'>Dogs</NavLink></li>
-                    <li><NavLink to ='#'>Computers</NavLink></li>
+                    <li><NavLink to = '/cats'>Cats</NavLink></li>
+                    <li><NavLink to ='/dogs'>Dogs</NavLink></li>
+                    <li><NavLink to ='/cars'>Cars</NavLink></li>
                 </ul>
             </nav>
         );

@@ -10,6 +10,8 @@
  
 import React, { Component } from 'react';
 import Photo from './Photo';
+import NoImages from './NoImages'; 
+
 
 //js interpolation example
 //href=`http://localhost:3000/project/${i}`
@@ -18,11 +20,18 @@ import Photo from './Photo';
 const PhotoContainer = (props) => {
 
     const results = props.data; 
-    let imgs = results.map( img => 
+    let imgs;
 
-        <Photo key={img.id} url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} /> 
 
-    ); 
+    if (results.length > 0) {
+
+        imgs = results.map(img => <Photo key={img.id} url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} />);
+
+    } else { 
+
+        imgs = <NoImages />
+
+    };
 
     return (
 
