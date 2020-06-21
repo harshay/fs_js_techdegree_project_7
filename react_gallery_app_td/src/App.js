@@ -86,7 +86,7 @@ export default class App extends Component {
               {
               
                 (this.state.loading)
-                ? <p3>Loading</p3>
+                ? <h3>Loading</h3>
                 : <PhotoContainer data={this.state.photos}/>                
                 
               }
