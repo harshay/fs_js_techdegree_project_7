@@ -82,13 +82,15 @@ export default class App extends Component {
             <div className="container">
               <SearchForm onSearch={this.performSearch} /> 
               <Nav />
+              <div ClassName = 'hlcontain'>
               {
-              if (this.state.loading) {
-                <h3>Loading</h3>
-              } else {
-                <PhotoContainer data={this.state.photos}/>
-              };
-              }          
+              
+                (this.state.loading)
+                ? <p3>Loading</p3>
+                : <PhotoContainer data={this.state.photos}/>                
+                
+              }
+              </div>                                      
             </div> 
           )}/>
           <Route path = '/cats' render={ () =>  (
