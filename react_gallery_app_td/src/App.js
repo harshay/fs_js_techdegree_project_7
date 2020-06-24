@@ -10,20 +10,6 @@
 
 //constructing a url to retrieve images : https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg    
 
-/*
-reference code
-
-<Route exact path = '/' render={ () =>  (
-            <div className="container">
-              <SearchForm onSearch={this.performSearch} /> 
-              <Nav />
-              <PhotoContainer data={this.state.photos}/>           
-            </div> 
-          )}/>
-
-*/
-
-
 
  /******************************************************************************************************** */
 import React, { Component } from 'react';
@@ -49,81 +35,51 @@ export default class App extends Component {
     this.state =  {
 
       photos:[],
-      loading: true
+      loading: true,
 
     };
 
   };
 
-  componentDidMount() {
-
-    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=planets&per_page=24&format=json&nojsoncallback=1`)
-      .then(response => response.json())
-      .then(data => this.setState({photos:data.photos.photo}));
- 
-  };
-
+  
   performSearch = (query) =>  {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => response.json())
       .then(data => this.setState({
-        photos:data.photos.photo,
-        loading:false}));
+        photos:data.photos.photo,loading:false}));
 
   };
+
+  componentDidMount() {
+
+    this.performSearch('planets');
+ 
+  };
+
 
   render() {
 
     return (
       <BrowserRouter>
       <Switch>
+          <SearchForm onSearch={this.performSearch()} /> 
+          <Nav />
           <Route exact path = '/' render={ () =>  (
-            <div className="container">
-              <SearchForm onSearch={this.performSearch} /> 
-              <Nav />
-              <div ClassName = 'hlcontain'>
+            <div className="container">              
+              
               {
               
                 (this.state.loading)
                 ? <h3>Loading</h3>
                 : <PhotoContainer data={this.state.photos}/>                
                 
-              }
-              </div>                                      
+              }                                 
             </div> 
           )}/>
-          <Route path = '/cats' render={ () =>  (
-            <div className="container">
-              <SearchForm onSearch={this.performSearch('cats')} /> 
-              <Nav />
-              <PhotoContainer data={this.state.photos}/>
-            </div> 
-          )}/>
-          <Route path = '/dogs' render={ () =>  (
-            <div className="container">
-              <SearchForm onSearch={this.performSearch('dogs')} /> 
-              <Nav />
-              <PhotoContainer data={this.state.photos}/>              
-            </div> 
-          )}/>
-          <Route path = '/cars' render={ () =>  (
-            <div className="container">
-              <SearchForm onSearch={this.performSearch('cars')} /> 
-              <Nav />
-              <PhotoContainer data={this.state.photos}/>              
-            </div> 
-          )}/>
-          <Route render={ () =>  (
-            <div className="container">
-              <SearchForm onSearch={this.performSearch} /> 
-              <Nav />
-              <NotFound />              
-            </div> 
-          )}/>
+          
       </Switch>
       </BrowserRouter> 
-
     );
   
   };  
