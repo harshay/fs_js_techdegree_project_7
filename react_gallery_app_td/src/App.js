@@ -62,7 +62,7 @@ export default class App extends Component {
    
 
      this.setState({cats : this.performSearch('cats')}); 
-     this.setState({cats : this.performSearch('dogs')}); 
+     this.setState({dogs : this.performSearch('dogs')}); 
 
   };
 
@@ -92,7 +92,7 @@ export default class App extends Component {
             )}/>
             <Route exact path = '/dogs' render={ () =>  (
               <div className="container">                      
-              <PhotoContainer data={this.state.cats}/>                                              
+              <PhotoContainer data={this.state.dogs}/>                                              
               </div> 
             )}/>
             <Route render={ () =>  (
