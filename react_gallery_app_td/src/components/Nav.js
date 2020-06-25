@@ -10,13 +10,9 @@
 import React, { Component } from 'react';
 import {
 
-    BrowserRouter,
-    Route,
     NavLink
   
   } from 'react-router-dom';
-
-import apiKey from './Config';
 
 export default class Nav extends Component {
 

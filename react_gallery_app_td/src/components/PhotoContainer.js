@@ -8,7 +8,7 @@
  * Harshay 
  *********************************************************************************************************/
  
-import React, { Component } from 'react';
+import React from 'react';
 import Photo from './Photo';
 import NoImages from './NoImages'; 
 

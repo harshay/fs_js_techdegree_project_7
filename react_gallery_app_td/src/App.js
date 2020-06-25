@@ -35,7 +35,10 @@ export default class App extends Component {
     this.state =  {
 
       photos:[],
-      loading: true,
+      cats:[],
+      dogs:[],
+      cars:[],
+      loading: true
 
     };
 
@@ -49,36 +52,55 @@ export default class App extends Component {
       .then(data => this.setState({
         photos:data.photos.photo,loading:false}));
 
+        return this.state.photos; 
+
   };
 
   componentDidMount() {
+    
+    
+   
 
-    this.performSearch('planets');
- 
+     this.setState({cats : this.performSearch('cats')}); 
+     this.setState({cats : this.performSearch('dogs')}); 
+
   };
 
 
   render() {
 
     return (
-      <BrowserRouter>
-      <Switch>
-          <SearchForm onSearch={this.performSearch()} /> 
-          <Nav />
-          <Route exact path = '/' render={ () =>  (
-            <div className="container">              
-              
-              {
-              
-                (this.state.loading)
-                ? <h3>Loading</h3>
-                : <PhotoContainer data={this.state.photos}/>                
+      <BrowserRouter>  
+      <SearchForm onSearch={this.performSearch} /> 
+      <Nav />      
+        <Switch>
+            <Route exact path = '/' render={ () =>  (
+              <div className="container">                      
+                {
                 
-              }                                 
-            </div> 
-          )}/>
-          
-      </Switch>
+                  (this.state.loading)
+                  ? <h3>Loading</h3>
+                  : <PhotoContainer data={this.state.photos}/>                
+                  
+                }                                 
+              </div> 
+            )}/>
+            <Route exact path = '/cats' render={ () =>  (
+              <div className="container">                      
+              <PhotoContainer data={this.state.cats}/>                                              
+              </div> 
+            )}/>
+            <Route exact path = '/dogs' render={ () =>  (
+              <div className="container">                      
+              <PhotoContainer data={this.state.cats}/>                                              
+              </div> 
+            )}/>
+            <Route render={ () =>  (
+              <div className="container">                      
+              <NotFound />                                               
+              </div> 
+            )}/>
+        </Switch>
       </BrowserRouter> 
     );
   
