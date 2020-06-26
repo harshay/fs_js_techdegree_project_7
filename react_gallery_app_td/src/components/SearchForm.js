@@ -26,12 +26,13 @@ export default class SearchForm extends Component {
 
     handleSubmit = (e) => { 
 
+        let propname = 'photos';
+
         e.preventDefault();
-        this.props.onSearch(this.state.searchText);
+        this.props.onSearch(this.state.searchText,propname);
         e.currentTarget.reset();
 
     };
-
 
     render() {
         return (

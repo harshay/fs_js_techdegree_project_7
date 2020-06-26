@@ -103,3 +103,4 @@ dist
 # TernJS port file
 .tern-port
 react_gallery_app_td/src/components/Config.js
+react_gallery_app_td/src/Config.js

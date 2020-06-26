@@ -17,7 +17,7 @@ import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
 import NotFound from './components/NotFound';
-import apiKey from './components/Config';
+import apiKey from './Config';
 import {
 
   BrowserRouter,
@@ -45,24 +45,25 @@ export default class App extends Component {
   };
 
   
-  performSearch = (query) =>  {
+  performSearch = (query,propname) =>  {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => response.json())
       .then(data => this.setState({
-        photos:data.photos.photo,loading:false}));
+        [propname]:data.photos.photo,loading:false}));
 
-        return this.state.photos; 
+        
 
   };
 
-  componentDidMount() {
-    
+  componentDidMount() {    
     
    
-
-     this.setState({cats : this.performSearch('cats')}); 
-     this.setState({dogs : this.performSearch('dogs')}); 
+      this.performSearch('cats','cats');
+      this.performSearch('dogs','dogs');
+      this.performSearch('cars','cars');
+      this.performSearch('aircraft','photos');
+     
 
   };
 
@@ -93,6 +94,11 @@ export default class App extends Component {
             <Route exact path = '/dogs' render={ () =>  (
               <div className="container">                      
               <PhotoContainer data={this.state.dogs}/>                                              
+              </div> 
+            )}/>
+             <Route exact path = '/cars' render={ () =>  (
+              <div className="container">                      
+              <PhotoContainer data={this.state.cars}/>                                              
               </div> 
             )}/>
             <Route render={ () =>  (
