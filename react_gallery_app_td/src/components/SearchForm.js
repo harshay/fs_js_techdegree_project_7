@@ -7,8 +7,19 @@
  * Harshay 
  *********************************************************************************************************/
 
-import React, { Component } from 'react';
+//https://github.com/ReactTraining/history/blob/master/docs/getting-started.md
 
+import React, { Component } from 'react';
+import {
+
+    //Redirect
+  
+  } from 'react-router-dom';
+
+import { createBrowserHistory } from 'history';
+let history = createBrowserHistory();
+
+  
 export default class SearchForm extends Component {
 
 
@@ -31,6 +42,9 @@ export default class SearchForm extends Component {
         e.preventDefault();
         this.props.onSearch(this.state.searchText,propname);
         e.currentTarget.reset();
+
+        history.push('/');
+      
 
     };
 

@@ -8,8 +8,11 @@
  *********************************************************************************************************/
 
 
-//constructing a url to retrieve images : https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg    
+//constructing a url to retrieve images : https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg 
 
+//redirects
+//https://knowbody.github.io/react-router-docs/api/Redirect.html   
+//https://scotch.io/courses/using-react-router-4/using-history
 
  /******************************************************************************************************** */
 import React, { Component } from 'react';
@@ -25,6 +28,7 @@ import {
   Switch
 
 } from 'react-router-dom';
+
 
 export default class App extends Component {
 
@@ -88,18 +92,21 @@ export default class App extends Component {
             )}/>
             <Route exact path = '/cats' render={ () =>  (
               <div className="container">                      
-              <PhotoContainer data={this.state.cats}/>                                              
+              <PhotoContainer data={this.state.cats}/>                                                          
               </div> 
+
             )}/>
             <Route exact path = '/dogs' render={ () =>  (
               <div className="container">                      
               <PhotoContainer data={this.state.dogs}/>                                              
               </div> 
+
             )}/>
              <Route exact path = '/cars' render={ () =>  (
               <div className="container">                      
               <PhotoContainer data={this.state.cars}/>                                              
               </div> 
+
             )}/>
             <Route render={ () =>  (
               <div className="container">                      
