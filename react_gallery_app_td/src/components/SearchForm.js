@@ -16,8 +16,7 @@ import {
   
   } from 'react-router-dom';
 
-import { createBrowserHistory } from 'history';
-let history = createBrowserHistory();
+
 
   
 export default class SearchForm extends Component {
@@ -43,7 +42,7 @@ export default class SearchForm extends Component {
         this.props.onSearch(this.state.searchText,propname);
         e.currentTarget.reset();
 
-        history.push('/');
+       
       
 
     };

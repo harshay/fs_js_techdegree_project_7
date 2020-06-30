@@ -13,11 +13,13 @@ import Photo from './Photo';
 import NoImages from './NoImages'; 
 
 
-//js interpolation example
-//href=`http://localhost:3000/project/${i}`
-//`${about_linkedin_link}`
+import { createBrowserHistory } from 'history';
+
+let history = createBrowserHistory();
 
 const PhotoContainer = (props) => {
+
+    
 
     const results = props.data; 
     let imgs;
@@ -26,11 +28,12 @@ const PhotoContainer = (props) => {
     if (results.length > 0) {
 
         imgs = results.map(img => <Photo key={img.id} url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} />);
+        history.push('/');
 
     } else { 
 
         imgs = <NoImages />
-
+        history.push('/');
     };
 
     return (
@@ -43,7 +46,10 @@ const PhotoContainer = (props) => {
             </ul>
         </div>
 
+    
+
     );
+       
 
 
 };
