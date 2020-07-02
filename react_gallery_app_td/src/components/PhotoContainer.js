@@ -12,11 +12,6 @@ import React from 'react';
 import Photo from './Photo';
 import NoImages from './NoImages'; 
 
-
-import { createBrowserHistory } from 'history';
-
-let history = createBrowserHistory();
-
 const PhotoContainer = (props) => {
     
 
@@ -27,13 +22,13 @@ const PhotoContainer = (props) => {
     if (results.length > 0) {
 
         imgs = results.map(img => <Photo key={img.id} url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} />);
-        history.push('/');
+        
        
 
     } else { 
 
         imgs = <NoImages />
-        history.push('/');
+        
         
 
     };
