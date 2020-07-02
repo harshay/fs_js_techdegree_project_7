@@ -18,7 +18,6 @@ import { createBrowserHistory } from 'history';
 let history = createBrowserHistory();
 
 const PhotoContainer = (props) => {
-
     
 
     const results = props.data; 
@@ -29,11 +28,14 @@ const PhotoContainer = (props) => {
 
         imgs = results.map(img => <Photo key={img.id} url={`https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}.jpg`} />);
         history.push('/');
+       
 
     } else { 
 
         imgs = <NoImages />
         history.push('/');
+        
+
     };
 
     return (
@@ -44,13 +46,9 @@ const PhotoContainer = (props) => {
                 {imgs}             
                 {/*inject page not found li tag here*/}  
             </ul>
-        </div>
-
-    
+        </div>    
 
     );
-       
-
 
 };
 

@@ -29,6 +29,10 @@ import {
 
 } from 'react-router-dom';
 
+import { createBrowserHistory } from 'history';
+
+let history = createBrowserHistory();
+
 
 export default class App extends Component {
 
@@ -42,7 +46,8 @@ export default class App extends Component {
       cats:[],
       dogs:[],
       cars:[],
-      loading: true
+      loading: true,
+      history: createBrowserHistory()
 
     };
 
@@ -71,12 +76,11 @@ export default class App extends Component {
 
   };
 
-
   render() {
 
     return (
       <BrowserRouter>  
-      <SearchForm onSearch={this.performSearch} /> 
+      <SearchForm onSearch={this.performSearch} history={this.history}/> 
       <Nav />      
         <Switch>
             <Route exact path = '/' render={ () =>  (

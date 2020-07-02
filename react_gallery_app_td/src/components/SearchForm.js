@@ -40,10 +40,9 @@ export default class SearchForm extends Component {
 
         e.preventDefault();
         this.props.onSearch(this.state.searchText,propname);
-        e.currentTarget.reset();
-
-       
+        e.currentTarget.reset();          
       
+        this.props.history.push('/');
 
     };
 
