@@ -29,9 +29,10 @@ import {
 
 } from 'react-router-dom';
 
-import { createBrowserHistory } from 'history';
+//https://stackoverflow.com/questions/53539314/what-is-withrouter-for-in-react-router-dom
 
-let history = createBrowserHistory();
+//import { createBrowserHistory } from 'history';
+//let history = createBrowserHistory();
 
 
 export default class App extends Component {
@@ -46,8 +47,7 @@ export default class App extends Component {
       cats:[],
       dogs:[],
       cars:[],
-      loading: true,
-      history: createBrowserHistory()
+      loading: true
 
     };
 
@@ -80,7 +80,7 @@ export default class App extends Component {
 
     return (
       <BrowserRouter>  
-      <SearchForm onSearch={this.performSearch} history={this.history}/> 
+      <SearchForm onSearch={this.performSearch}/> 
       <Nav />      
         <Switch>
             <Route exact path = '/' render={ () =>  (
@@ -125,3 +125,5 @@ export default class App extends Component {
 
 };
  
+
+export default withRouter(SearchForm);
