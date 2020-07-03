@@ -96,7 +96,7 @@ export default class App extends Component {
             )}/>
             <Route exact path = '/search/:query' render={ () =>  (
               <div className="container">                      
-              <PhotoContainer data={this.state.cats}/>                                                          
+              <PhotoContainer data={this.state.photos}/>                                                          
               </div> 
 
             )}/>
