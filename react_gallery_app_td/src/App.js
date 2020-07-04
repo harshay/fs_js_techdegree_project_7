@@ -30,6 +30,7 @@ import {
 } from 'react-router-dom';
 import { withRouter } from "react-router";
 
+//give searchform component access to the history object 
 const SearchFormWithRouter = withRouter(SearchForm);
 
 //https://stackoverflow.com/questions/53539314/what-is-withrouter-for-in-react-router-dom
