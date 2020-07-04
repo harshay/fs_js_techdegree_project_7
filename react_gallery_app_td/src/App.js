@@ -28,6 +28,9 @@ import {
   Switch
 
 } from 'react-router-dom';
+import { withRouter } from "react-router";
+
+const SearchFormWithRouter = withRouter(SearchForm);
 
 //https://stackoverflow.com/questions/53539314/what-is-withrouter-for-in-react-router-dom
 
@@ -80,7 +83,7 @@ export default class App extends Component {
 
     return (
       <BrowserRouter>  
-      <SearchForm onSearch={this.performSearch}/> 
+      <SearchFormWithRouter onSearch={this.performSearch}/> 
       <Nav />      
         <Switch>
             <Route exact path = '/' render={ () =>  (
@@ -131,5 +134,3 @@ export default class App extends Component {
 
 };
  
-
-export default withRouter(SearchForm);

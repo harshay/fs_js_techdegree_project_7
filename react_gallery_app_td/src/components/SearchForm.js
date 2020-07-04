@@ -36,13 +36,20 @@ export default class SearchForm extends Component {
 
     handleSubmit = (e) => { 
 
+        let path;
+
+        path = ``;
+
         let propname = 'photos';
+        let searchVal = this.state.searchText;
 
         e.preventDefault();
-        this.props.onSearch(this.state.searchText,propname);
+        this.props.onSearch(searchVal,propname);
         e.currentTarget.reset();          
       
-        this.props.history.push('/');
+        path = `search/${searchVal}`; 
+
+        this.props.history.push(path); 
 
     };
 
