@@ -47,9 +47,11 @@ export default class SearchForm extends Component {
         this.props.onSearch(searchVal,propname);
         e.currentTarget.reset();          
       
-        path = `search/${searchVal}`; 
+        path = `/search/${searchVal}`; 
 
         this.props.history.push(path); 
+
+        this.props.loading_state = true;
 
     };
 

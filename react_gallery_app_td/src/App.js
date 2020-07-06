@@ -93,14 +93,19 @@ export default class App extends Component {
                 
                   (this.state.loading)
                   ? <h3>Loading</h3>
-                  : <PhotoContainer data={this.state.photos}/>                
+                  : <PhotoContainer loading_state={this.state.loading} data={this.state.photos}/>                
                   
                 }                                 
               </div> 
             )}/>
             <Route exact path = '/search/:query' render={ () =>  (
-              <div className="container">                      
-              <PhotoContainer data={this.state.photos}/>                                                          
+              <div className="container">          
+               {
+                
+                (this.state.loading)
+                ? <h3>Loading</h3>            
+                :<PhotoContainer  loading_state={this.state.loading} data={this.state.photos}/>    
+              }                                                       
               </div> 
 
             )}/>
