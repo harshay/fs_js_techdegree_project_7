@@ -51,7 +51,6 @@ export default class SearchForm extends Component {
 
         this.props.history.push(path); 
 
-        this.props.loading_state = true;
 
     };
 

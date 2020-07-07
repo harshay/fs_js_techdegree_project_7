@@ -63,7 +63,9 @@ export default class App extends Component {
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => response.json())
       .then(data => this.setState({
-        [propname]:data.photos.photo,loading:false}));
+        [propname]:data.photos.photo,loading:false}))
+      .then(this.setState({loading:true}))
+      ;
 
         
 
@@ -93,39 +95,48 @@ export default class App extends Component {
                 
                   (this.state.loading)
                   ? <h3>Loading</h3>
-                  : <PhotoContainer loading_state={this.state.loading} data={this.state.photos}/>                
+                  : <PhotoContainer data={this.state.photos}/>                
                   
                 }                                 
               </div> 
             )}/>
             <Route exact path = '/search/:query' render={ () =>  (
               <div className="container">          
-               {
+              {
                 
                 (this.state.loading)
                 ? <h3>Loading</h3>            
-                :<PhotoContainer  loading_state={this.state.loading} data={this.state.photos}/>    
+                :<PhotoContainer  data={this.state.photos}/>    
               }                                                       
               </div> 
-
             )}/>
             <Route exact path = '/cats' render={ () =>  (
-              <div className="container">                      
-              <PhotoContainer data={this.state.cats}/>                                                          
+              <div className="container"> 
+              {
+                
+                (this.state.loading)
+                ? <h3>Loading</h3>            
+                :<PhotoContainer data={this.state.cats}/>  
+              }                                                        
               </div> 
-
             )}/>
             <Route exact path = '/dogs' render={ () =>  (
-              <div className="container">                      
-              <PhotoContainer data={this.state.dogs}/>                                              
+              <div className="container">      
+              {                
+                (this.state.loading)
+                ? <h3>Loading</h3>                              
+              :<PhotoContainer data={this.state.dogs}/>
+              }                                              
               </div> 
-
             )}/>
              <Route exact path = '/cars' render={ () =>  (
-              <div className="container">                      
-              <PhotoContainer data={this.state.cars}/>                                              
+              <div className="container">                
+              {
+                (this.state.loading)
+                ? <h3>Loading</h3>                    
+              :<PhotoContainer data={this.state.cars}/>
+              }                                              
               </div> 
-
             )}/>
             <Route render={ () =>  (
               <div className="container">                      
