@@ -82,6 +82,18 @@ export default class App extends Component {
 
   };
 
+  componentDidUpdate() {        
+   
+     //check if the user has navigated to the /search/query path
+    if((prevProps.location.pathname != window.location.href) && (window.location.href === 'localhost:3000/search/:query')) { 
+
+      this.performSearch(prevProps.location.pathname,'photos')
+
+    }   
+   
+
+  };
+
   render() {
 
     return (
