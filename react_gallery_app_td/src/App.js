@@ -82,22 +82,21 @@ export default class App extends Component {
 
   };
 
-  componentDidUpdate() {        
-   
-     //check if the user has navigated to the /search/query path
-    if((prevProps.location.pathname != window.location.href) && (window.location.href === 'localhost:3000/search/:query')) { 
-
-      this.performSearch(prevProps.location.pathname,'photos')
-
-    }   
-   
+  /*
+  componentDidUpdate(prevProps, prevState) {
+    
+   // if (this.props.location.pathname !== prevProps.location.pathname) {
+   //   console.log('Route change!');
+   // };
 
   };
+  */
 
+  
   render() {
 
     return (
-      <BrowserRouter>  
+       
       <SearchFormWithRouter onSearch={this.performSearch}/> 
       <Nav />      
         <Switch>
@@ -156,10 +155,14 @@ export default class App extends Component {
               </div> 
             )}/>
         </Switch>
-      </BrowserRouter> 
+      
     );
   
   };  
 
 };
  
+
+
+//Lastly, export App through withRouter at bottom of App.js
+export default withRouter(App);
