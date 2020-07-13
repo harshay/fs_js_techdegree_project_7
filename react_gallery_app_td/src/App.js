@@ -96,12 +96,13 @@ export default class App extends Component {
   render() {
 
     return (
-       
-      <SearchFormWithRouter onSearch={this.performSearch}/> 
-      <Nav />      
-        <Switch>
+      
+
+      <><SearchFormWithRouter onSearch={this.performSearch}/></>
+      <><Nav /></>   
+        <Switch> 
             <Route exact path = '/' render={ () =>  (
-              <div className="container">                      
+              <div className="container">                     
                 {
                 
                   (this.state.loading)
