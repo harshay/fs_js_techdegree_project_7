@@ -98,8 +98,9 @@ export default class App extends Component {
     return (
       
 
-      <><SearchFormWithRouter onSearch={this.performSearch}/></>
-      <><Nav /></>   
+      <>
+      <SearchFormWithRouter onSearch={this.performSearch}/>
+        <Nav />   
         <Switch> 
             <Route exact path = '/' render={ () =>  (
               <div className="container">                     
@@ -156,7 +157,7 @@ export default class App extends Component {
               </div> 
             )}/>
         </Switch>
-      
+        </>
     );
   
   };  
