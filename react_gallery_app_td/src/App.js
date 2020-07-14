@@ -39,7 +39,8 @@ const SearchFormWithRouter = withRouter(SearchForm);
 //let history = createBrowserHistory();
 
 
-export default class App extends Component {
+
+class App extends Component {
 
   constructor() {
 
@@ -164,6 +165,7 @@ export default class App extends Component {
 
 };
  
+
 
 
 //Lastly, export App through withRouter at bottom of App.js
