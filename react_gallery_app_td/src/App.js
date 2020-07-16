@@ -23,7 +23,6 @@ import NotFound from './components/NotFound';
 import apiKey from './Config';
 import {
 
-  BrowserRouter,
   Route,
   Switch
 
@@ -65,8 +64,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         [propname]:data.photos.photo,loading:false}))
-      .then(this.setState({loading:true}))
-      ;
+      .then(this.setState({loading:true}));
 
         
 
@@ -83,17 +81,24 @@ class App extends Component {
 
   };
 
-  /*
+  
   componentDidUpdate(prevProps, prevState) {
-    
-   // if (this.props.location.pathname !== prevProps.location.pathname) {
-   //   console.log('Route change!');
-   // };
-
-  };
-  */
 
   
+      let search_chk = (this.props.location.pathname).substring(1,7);
+      let search_chk_len = search_chk.length + 2;  
+      
+      if ((this.props.location.pathname !== prevProps.location.pathname) && (search_chk = 'search')) {        
+     
+        let search_term = (this.props.location.pathname).slice(search_chk_len);        
+
+        this.performSearch(search_term,'photos');        
+
+      };
+        
+    };
+    
+   
   render() {
 
     return (
