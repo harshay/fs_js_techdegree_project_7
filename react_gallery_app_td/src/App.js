@@ -65,7 +65,6 @@ class App extends Component {
       .then(data => this.setState({
         [propname]:data.photos.photo,loading:false}))
       .then(this.setState({loading:true}));
-
         
 
   };
@@ -73,9 +72,6 @@ class App extends Component {
   componentDidMount() {    
     
    
-      this.performSearch('cats','cats');
-      this.performSearch('dogs','dogs');
-      this.performSearch('cars','cars');
       this.performSearch('aircraft','photos');
      
 
@@ -88,7 +84,7 @@ class App extends Component {
       let search_chk = (this.props.location.pathname).substring(1,7);
       let search_chk_len = search_chk.length + 2;  
       
-      if ((this.props.location.pathname !== prevProps.location.pathname) && (search_chk = 'search')) {        
+      if ((this.props.location.pathname !== prevProps.location.pathname)) {        
      
         let search_term = (this.props.location.pathname).slice(search_chk_len);        
 
@@ -135,7 +131,7 @@ class App extends Component {
                 
                 (this.state.loading)
                 ? <h3>Loading</h3>            
-                :<PhotoContainer data={this.state.cats}/>  
+                :<PhotoContainer data={this.state.photo}/>  
               }                                                        
               </div> 
             )}/>
@@ -144,7 +140,7 @@ class App extends Component {
               {                
                 (this.state.loading)
                 ? <h3>Loading</h3>                              
-              :<PhotoContainer data={this.state.dogs}/>
+              :<PhotoContainer data={this.state.photo}/>
               }                                              
               </div> 
             )}/>
@@ -153,7 +149,7 @@ class App extends Component {
               {
                 (this.state.loading)
                 ? <h3>Loading</h3>                    
-              :<PhotoContainer data={this.state.cars}/>
+              :<PhotoContainer data={this.state.photo}/>
               }                                              
               </div> 
             )}/>
