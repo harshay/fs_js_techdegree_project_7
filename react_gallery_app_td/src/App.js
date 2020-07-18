@@ -75,9 +75,9 @@ class App extends Component {
         
       if ((this.props.location.pathname !== prevProps.location.pathname)) { 
 
-        if  ((this.props.location.pathname).includes('cats') === true ||
-             (this.props.location.pathname).includes('dogs') === true ||
-             (this.props.location.pathname).includes('cars') === true) {
+        if  ((this.props.location.pathname).includes('/cats') === true ||
+             (this.props.location.pathname).includes('/dogs') === true ||
+             (this.props.location.pathname).includes('/cars') === true) {
               
               this.performSearch((this.props.location.pathname).slice(1),'photos');
 
