@@ -37,8 +37,6 @@ const SearchFormWithRouter = withRouter(SearchForm);
 //import { createBrowserHistory } from 'history';
 //let history = createBrowserHistory();
 
-
-
 class App extends Component {
 
   constructor() {
@@ -49,14 +47,11 @@ class App extends Component {
 
       photos:[],
       cats:[],
-      dogs:[],
-      cars:[],
       loading: true
 
     };
 
   };
-
   
   performSearch = (query,propname) =>  {
 
@@ -72,33 +67,40 @@ class App extends Component {
   componentDidMount() {    
     
    
-      this.performSearch('aircraft','photos');
-     
+      this.performSearch('aircraft','photos');      
 
   };
-
   
   componentDidUpdate(prevProps, prevState) {
+        
+      if ((this.props.location.pathname !== prevProps.location.pathname)) { 
 
-  
-      let search_chk = (this.props.location.pathname).substring(1,7);
-      let search_chk_len = search_chk.length + 2;  
-      
-      if ((this.props.location.pathname !== prevProps.location.pathname)) {        
-     
-        let search_term = (this.props.location.pathname).slice(search_chk_len);        
+        if  ((this.props.location.pathname).includes('cats') === true ||
+             (this.props.location.pathname).includes('dogs') === true ||
+             (this.props.location.pathname).includes('cars') === true) {
+              
+              this.performSearch((this.props.location.pathname).slice(1),'photos');
 
-        this.performSearch(search_term,'photos');        
+        } else if ((this.props.location.pathname).includes('/search')) {
+
+              let search_chk = (this.props.location.pathname).substring(1,7);
+              let search_chk_len = search_chk.length + 2;        
+
+              this.performSearch((this.props.location.pathname).slice(search_chk_len),'photos');          
+
+        } else {
+
+              this.performSearch('aircraft','photos');
+
+        };        
 
       };
         
-    };
-    
+    };    
    
   render() {
 
-    return (
-      
+    return (      
 
       <>
       <SearchFormWithRouter onSearch={this.performSearch}/>
@@ -131,16 +133,16 @@ class App extends Component {
                 
                 (this.state.loading)
                 ? <h3>Loading</h3>            
-                :<PhotoContainer data={this.state.photo}/>  
+                :<PhotoContainer data={this.state.photos}/>  
               }                                                        
               </div> 
-            )}/>
+            )}/> 
             <Route exact path = '/dogs' render={ () =>  (
               <div className="container">      
               {                
                 (this.state.loading)
                 ? <h3>Loading</h3>                              
-              :<PhotoContainer data={this.state.photo}/>
+              :<PhotoContainer data={this.state.photos}/>
               }                                              
               </div> 
             )}/>
@@ -149,7 +151,7 @@ class App extends Component {
               {
                 (this.state.loading)
                 ? <h3>Loading</h3>                    
-              :<PhotoContainer data={this.state.photo}/>
+              :<PhotoContainer data={this.state.photos}/>
               }                                              
               </div> 
             )}/>
@@ -165,9 +167,6 @@ class App extends Component {
   };  
 
 };
- 
-
-
 
 //Lastly, export App through withRouter at bottom of App.js
 export default withRouter(App);
